@@ -2,6 +2,8 @@
 
 This was a convoluted neural network created for the [Digit Recognizer](https://www.kaggle.com/c/digit-recognizer) competition on Kaggle. In the competition it scored a perfect score of 1.00000, placing me in the top 2% of participants. It uses both the provided competition dataset and the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) for training.
 
+![Image header](https://i.imgur.com/84zjg1d.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project running on your local machine for development and testing purposes. See below for the prequisites before starting the installation.
