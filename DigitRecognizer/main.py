@@ -7,17 +7,9 @@ from keras.optimizers import RMSprop
 import numpy as np
 import pandas as pd
 
-data_size = 28
-colour_threshold = 100 / 255
-
-file = open("train.csv")
-train_df1 = pd.read_csv(file)
-
-file = open("mnist_test.csv")
-train_df2 = pd.read_csv(file)
-
-file = open("mnist_train.csv")
-train_df3 = pd.read_csv(file)
+train_df1 = pd.read_csv("train.csv")
+train_df2 = pd.read_csv("mnist_test.csv")
+train_df3 = pd.read_csv("mnist_train.csv")
 
 y_train1 = np.array(train_df1.iloc[:, 0])
 y_train2 = np.array(train_df2.iloc[:, 0])
@@ -30,26 +22,24 @@ x_train3 = np.array(train_df3.iloc[:, 1:])
 x_train = np.row_stack((x_train1,x_train2, x_train3))
 y_train = np.append(np.append(y_train1,y_train2), y_train3)
 
-file = open("test.csv")
-test_df = pd.read_csv(file)
+test_df = pd.read_csv("test.csv")
 x_test = np.array(test_df)
 
 n_samples_train = x_train.shape[0]
 n_samples_test = x_test.shape[0]
-        
+
 def inttofloat(x):
     x = x / 255
     return x
 
-def output(prediction, model_name):
+def output(prediction):
     df_predict = {"ImageId":range(1, n_samples_test+1), "Label":prediction}
     df_predict = pd.DataFrame(df_predict)
     df_predict.to_csv("Submission.csv", index = False)
-    
+
 x_train = inttofloat(x_train)
 x_test = inttofloat(x_test)
-    
-model_name = "CNN"
+
 model = Sequential()
 y_train = utils.to_categorical(y_train, num_classes=10)
 
@@ -69,4 +59,4 @@ model.compile(loss='binary_crossentropy', optimizer=rmsprop, metrics=['accuracy'
 model.fit(x_train, y_train, epochs=60, batch_size=64)
 prediction = model.predict_classes(x_test)
 
-output(prediction, model_name)
+output(prediction)
