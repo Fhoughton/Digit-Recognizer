@@ -19,8 +19,8 @@ These instructions will get you a copy of the project running on your local mach
 
 1. Download and unpack the zip file of this repository.
 2. Edit the file where necessary, such as reducing the epochs for testing purposes
-2. Open terminal and cd into the folder where you saved it.
-3. Run main.py in terminal.
+3. Open terminal and cd into the folder where you saved it.
+4. Run main.py in terminal.
 
 ```
 $ python main.py
